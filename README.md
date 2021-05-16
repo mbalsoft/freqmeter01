@@ -25,3 +25,7 @@ There are possible commands:
 
 The pinout view from STM32CubeMX:
 <img src='STM32F103C8T6_pinout.png' />
+
+Pins: PC13 and PC14 - are marked busy.
+Project not use LSE clock but on Blue Pill board are connected to crystal ~32kHz.
+
