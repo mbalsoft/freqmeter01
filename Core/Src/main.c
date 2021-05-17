@@ -360,7 +360,7 @@ void set_mco() {
 	         break;
 	case 2 : HAL_RCC_MCOConfig( RCC_MCO, RCC_MCO1SOURCE_HSI, RCC_MCODIV_1 ); // HSI ~8MHz
 	         break;
-	case 3 : HAL_RCC_MCOConfig( RCC_MCO, RCC_MCO1SOURCE_HSE, RCC_MCODIV_1 ); // HSE ~8MHz
+	case 3 : HAL_RCC_MCOConfig( RCC_MCO, RCC_MCO1SOURCE_HSE, RCC_MCODIV_1 ); // HSE =8MHz
 	         break;
 	default : HAL_RCC_MCOConfig( RCC_MCO, RCC_MCO1SOURCE_NOCLOCK, RCC_MCODIV_1 );
 	          mco_current = 0;
@@ -381,6 +381,7 @@ void sys_tick_interrupt(void) {
     /* Scratch pad to finalized result */
     if( ! hold ) {
       freq = freq_scratch + __HAL_TIM_GetCounter( &htim2 );
+      freq *= 1.000004;
     }
     // Reset the counter. This will generate one extra overflow for next measurement.
     // In case of nothing got counted, manually generate a reset to keep consistency.
